@@ -4,7 +4,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "server:dev": "webpack-dev-server --config config/webpack.dev.js --progress --profile --watch --content-base src/",
+    "server:dev": "webpack-dev-server --config config/webpack.dev.js --profile --watch --content-base src/",
     "start": "npm run server:dev",
     "webpack-dev-server": "webpack-dev-server"
   },
@@ -31,7 +31,7 @@
     "@types/jasmine": "^2.2.34",
     "@types/node": "^6.0.40",
     "@types/protractor": "^1.5.20",
-    "@types/selenium-webdriver": "^2.53.30",
+    "@types/selenium-webdriver": "^2.44.26",
     "@types/source-map": "^0.1.27",
     "@types/uglify-js": "^2.6.28",
     "@types/webpack": "^1.12.34",
@@ -69,7 +69,7 @@
     "typedoc": "^0.4.5",
     "typescript": "^2.0.0",
     "url-loader": "^0.5.7",
-    "webpack": "^2.1.0-beta.25",
+    "webpack": "^2.1.0-beta.21",
     "webpack-dev-middleware": "^1.8.1",
     "webpack-dev-server": "^2.1.0-beta.2",
     "webpack-md5-hash": "0.0.5",
