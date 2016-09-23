@@ -9,7 +9,7 @@ export class DataResolver implements Resolve<any> {
   constructor() {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return Observable.of({ res: 'This is resolve data'});
+    return Observable.of({ res: 'This is resolve data / app.resolver.ts' });
   }
 }
 

@@ -6,7 +6,7 @@ export type InteralStateType = {
 
 @Injectable()
 export class AppState {
-  private state: InteralStateType = { };
+  state: InteralStateType = {};
 
   constructor() {}
 
