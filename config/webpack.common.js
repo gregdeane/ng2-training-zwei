@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const helpers = require('./helpers');
 
-/*
- * Webpack Plugins
+/**
+ * Plugins
  */
 // problem with copy-webpack-plugin
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -12,70 +12,49 @@ const HtmlElementsPlugin = require('./html-elements-plugin');
 const AssetsPlugin = require('assets-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
-/*
- * Webpack Constants
+/**
+ * Constants
  */
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'Angular 2 Training Zwei',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
 
-/*
- * Webpack configuration
- *
- * See: http://webpack.github.io/docs/configuration.html#cli
+/**
+ * Configuration
+ * http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
   isProd = options.env === 'production';
   return {
 
-    /*
-     * Static metadata for index.html
-     *
-     * See: (custom attribute)
-     */
+    // static metadata for index.html
     metadata: METADATA,
 
-    /*
-     * Cache generated modules and chunks to improve performance for multiple incremental builds.
-     * This is enabled by default in watch mode.
-     * You can pass false to disable it.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#cache
-     */
+    // cache generated modules and chunks to improve performance for multiple incremental builds.
+    // enabled by default in watch mode. pass false to disable it.
+    // http://webpack.github.io/docs/configuration.html#cache
     //cache: false,
 
-    /*
-     * The entry point for the bundle
-     * Our Angular.js app
-     *
-     * See: http://webpack.github.io/docs/configuration.html#entry
-     */
+    // entry point for the bundle
+    // http://webpack.github.io/docs/configuration.html#entry
     entry: {
-
       'polyfills': './src/polyfills.browser.ts',
-      'vendor':    './src/vendor.browser.ts',
-      'main':      './src/main.browser.ts'
-
+      'vendor': './src/vendor.browser.ts',
+      'main': './src/main.browser.ts'
     },
 
-    /*
-     * Options affecting the resolving of modules.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#resolve
-     */
+    // options affecting the resolving of modules.
+    // http://webpack.github.io/docs/configuration.html#resolve
     resolve: {
 
-      /*
-       * An array of extensions that should be used to resolve modules.
-       *
-       * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-       */
+      // array of extensions that should be used to resolve modules.
+      // http://webpack.github.io/docs/configuration.html#resolve-extensions
       extensions: ['', '.ts', '.js', '.json'],
 
-      // Make sure root is src
+      // ensure root is src
       root: helpers.root('src'),
 
       // remove other default values
@@ -83,18 +62,12 @@ module.exports = function(options) {
 
     },
 
-    /*
-     * Options affecting the normal modules.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#module
-     */
+    // options affecting the normal modules.
+    // http://webpack.github.io/docs/configuration.html#module
     module: {
 
-      /*
-       * An array of applied pre and post loaders.
-       *
-       * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-       */
+      // array of applied pre and post loaders.
+      // http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
       preLoaders: [
         {
           test: /\.ts$/,
@@ -106,26 +79,18 @@ module.exports = function(options) {
           },
           include: [helpers.root('src')]
         },
-
       ],
 
-      /*
-       * An array of automatically applied loaders.
-       *
-       * IMPORTANT: The loaders here are resolved relative to the resource which they are applied to.
-       * This means they are not resolved relative to the configuration file.
-       *
-       * See: http://webpack.github.io/docs/configuration.html#module-loaders
-       */
+      // array of automatically applied loaders.
+      // IMPORTANT: the loaders here are resolved relative to the resource which they are applied to.
+      // this means they are not resolved relative to the configuration file.
+      // http://webpack.github.io/docs/configuration.html#module-loaders
       loaders: [
 
-        /*
-         * Typescript loader support for .ts and Angular 2 async routes via .async.ts
-         * Replace templateUrl and stylesUrl with require()
-         *
-         * See: https://github.com/s-panferov/awesome-typescript-loader
-         * See: https://github.com/TheLarkInn/angular2-template-loader
-         */
+        // typescript loader support for .ts and Angular 2 async routes via .async.ts
+        // replace templateUrl and stylesUrl with require()
+        // https://github.com/s-panferov/awesome-typescript-loader
+        // https://github.com/TheLarkInn/angular2-template-loader
         {
           test: /\.ts$/,
           loaders: [
@@ -136,39 +101,30 @@ module.exports = function(options) {
           exclude: [/\.(spec|e2e)\.ts$/]
         },
 
-        /*
-         * Json loader support for *.json files.
-         *
-         * See: https://github.com/webpack/json-loader
-         */
+        // json loader support for *.json files.
+        // https://github.com/webpack/json-loader
         {
           test: /\.json$/,
           loader: 'json-loader'
         },
 
-        /*
-         * to string and css loader support for *.css files
-         * Returns file content as string
-         *
-         */
+        // to-string and css-loader support for *.css files
+        // returns file content as string
         {
           test: /\.css$/,
           loaders: ['to-string-loader', 'css-loader']
         },
 
-        /* Raw loader support for *.html
-         * Returns file content as string
-         *
-         * See: https://github.com/webpack/raw-loader
-         */
+        // raw loader support for *.html
+        // returns file content as string
+        // https://github.com/webpack/raw-loader
         {
           test: /\.html$/,
           loader: 'raw-loader',
           exclude: [helpers.root('src/index.html')]
         },
 
-        /* File loader for supporting images, for example, in CSS files.
-         */
+        // file loader for supporting images, for example, in CSS files.
         {
           test: /\.(jpg|png|gif)$/,
           loader: 'file'
@@ -188,11 +144,8 @@ module.exports = function(options) {
       ]
     },
 
-    /*
-     * Add additional plugins to the compiler.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#plugins
-     */
+    // add additional plugins to the compiler.
+    // http://webpack.github.io/docs/configuration.html#plugins
     plugins: [
       new AssetsPlugin({
         path: helpers.root('dist'),
@@ -200,20 +153,19 @@ module.exports = function(options) {
         prettyPrint: true
       }),
 
-      /*
+      /**
        * Plugin: ForkCheckerPlugin
-       * Description: Do type checking in a separate process, so webpack don't need to wait.
-       *
-       * See: https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
+       * Description: do type checking in a separate process, so webpack doesn't need to wait.
+       * https://github.com/s-panferov/awesome-typescript-loader#forkchecker-boolean-defaultfalse
        */
       new ForkCheckerPlugin(),
-      /*
+
+      /**
        * Plugin: CommonsChunkPlugin
-       * Description: Shares common code between the pages.
-       * It identifies common modules and put them into a commons chunk.
+       * Description: Shares common code between pages.
        *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-       * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
+       * https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
+       * https://github.com/webpack/docs/wiki/optimization#multi-page-app
        */
       new webpack.optimize.CommonsChunkPlugin({
         name: ['polyfills', 'vendor'].reverse()
@@ -223,8 +175,8 @@ module.exports = function(options) {
        * Plugin: ContextReplacementPlugin
        * Description: Provides context to Angular's use of System.import
        *
-       * See: https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
-       * See: https://github.com/angular/angular/issues/11580
+       * https://webpack.github.io/docs/list-of-plugins.html#contextreplacementplugin
+       * https://github.com/angular/angular/issues/11580
        */
       new ContextReplacementPlugin(
         // The (\\|\/) piece accounts for path separators in *nix and Windows
@@ -232,33 +184,31 @@ module.exports = function(options) {
         helpers.root('src') // location of your src
       ),
 
-      /*
+      /**
        * Plugin: CopyWebpackPlugin
        * Description: Copy files and directories in webpack.
        *
-       * Copies project static assets.
-       *
-       * See: https://www.npmjs.com/package/copy-webpack-plugin
+       * https://www.npmjs.com/package/copy-webpack-plugin
        */
       new CopyWebpackPlugin([{
         from: 'src/assets',
         to: 'assets'
       }]),
 
-      /*
+      /**
        * Plugin: HtmlWebpackPlugin
-       * Description: Simplifies creation of HTML files to serve your webpack bundles.
+       * Description: Simplifies creation of HTML files to serve webpack bundles.
        * This is especially useful for webpack bundles that include a hash in the filename
        * which changes every compilation.
        *
-       * See: https://github.com/ampedandwired/html-webpack-plugin
+       * https://github.com/ampedandwired/html-webpack-plugin
        */
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         chunksSortMode: 'dependency'
       }),
 
-      /*
+      /**
        * Plugin: HtmlHeadConfigPlugin
        * Description: Generate html tags based on javascript maps.
        *
@@ -266,7 +216,7 @@ module.exports = function(options) {
        * href attributes, you can disable that by adding a "=href": false property.
        * You can also enable it to other attribute by settings "=attName": true.
        *
-       * The configuration supplied is map between a location (key) and an element definition object (value)
+       * The configuration supplied is a map between a location (key) and an element definition object (value)
        * The location (key) is then exported to the template under then htmlElements property in webpack configuration.
        *
        * Example:
@@ -286,11 +236,11 @@ module.exports = function(options) {
 
     ],
 
-    /*
+    /**
      * Include polyfills or mocks for various node stuff
      * Description: Node configuration
      *
-     * See: https://webpack.github.io/docs/configuration.html#node
+     * https://webpack.github.io/docs/configuration.html#node
      */
     node: {
       global: 'window',

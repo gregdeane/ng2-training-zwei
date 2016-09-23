@@ -3,13 +3,13 @@ const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 const commonConfig = require('./webpack.common.js'); // the settings that are common to prod and dev
 
 /**
- * Webpack Plugins
+ * Plugins
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const NamedModulesPlugin = require('webpack/lib/NamedModulesPlugin');
 
 /**
- * Webpack Constants
+ * Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 const HOST = process.env.HOST || 'localhost';
@@ -23,12 +23,11 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
 });
 
 /**
- * Webpack configuration
- *
- * See: http://webpack.github.io/docs/configuration.html#cli
+ * Configuration
+ * http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
-  return webpackMerge(commonConfig({env: ENV}), {
+  return webpackMerge(commonConfig({ env: ENV }), {
 
     /**
      * Merged metadata from webpack.common.js for index.html
@@ -82,7 +81,8 @@ module.exports = function(options) {
        */
       sourceMapFilename: '[name].map',
 
-      /** The filename of non-entry chunks as relative path
+      /**
+       * The filename of non-entry chunks as relative path
        * inside the output.path directory.
        *
        * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
