@@ -5,11 +5,12 @@ import HomeComponent from './home';
 import PageNotFoundComponent from './404';
 
 const ROUTES: Routes = [
-  { path: '', redirectTo: 'home' },
+  { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
-  { path: 'detail', loadChildren: () => System.import('./+detail') },
   { path: '**', component: PageNotFoundComponent }
 ];
+
+//{ path: 'detail', loadChildren: () => System.import('./+detail') },
 
 @NgModule({
   imports: [RouterModule.forRoot(ROUTES)],

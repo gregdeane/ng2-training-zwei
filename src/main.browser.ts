@@ -5,12 +5,14 @@ import { decorateModuleRef } from './app/environment';
 import AppModule from './app';
 
 // bootstrap app with top level NgModule
-export function main(): Promise<any> {
-  return platformBrowserDynamic()
-    .bootstrapModule(AppModule)
-    .then(decorateModuleRef)
-    .catch(err => console.error(err));
-}
+// export function main(): Promise<any> {
+//   return platformBrowserDynamic()
+//     .bootstrapModule(AppModule)
+//     .then(decorateModuleRef)
+//     .catch(err => console.error(err));
+// }
+
+platformBrowserDynamic().bootstrapModule(AppModule);
 
 // needed for hmr
 // in prod this is replace for document ready
