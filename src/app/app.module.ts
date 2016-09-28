@@ -4,24 +4,28 @@ import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule, ROUTING_COMPONENTS } from './app.routing';
+import { routing, appRoutingProviders } from './app.routing';
 import { AppService } from './app.service';
 import { ENV_PROVIDERS } from './environment';
+import { HomeComponent } from './home';
+import { PageNotFoundComponent } from './404';
 
 const APP_PROVIDERS = [
-  AppService
+  AppService,
+  appRoutingProviders
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ROUTING_COMPONENTS
+    HomeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    routing
   ],
   providers: [
     APP_PROVIDERS,

@@ -10,8 +10,6 @@ const AssetsPlugin = require('assets-webpack-plugin');
 const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin');
 
 const METADATA = {
-  title: 'Angular 2 Training Zwei',
-  baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
 

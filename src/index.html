@@ -2,17 +2,17 @@
 <html lang="">
 
 <head>
+  <base href="/">
+
   <meta charset="utf-8">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title><%= webpackConfig.metadata.title %></title>
+  <title>Angular 2 Training</title>
 
   <% if (webpackConfig.htmlElements.headTags) { %>
   <%= webpackConfig.htmlElements.headTags %>
   <% } %>
-
-  <base href="<%= webpackConfig.metadata.baseUrl %>">
 
 </head>
 
@@ -22,7 +22,7 @@
     Loading...
   </ng2-training>
 
-  <% if (webpackConfig.metadata.isDevServer && webpackConfig.metadata.HMR !== true) { %>
+  <% if (webpackConfig.metadata.isDevServer) { %>
   <script src="/webpack-dev-server.js"></script>
   <% } %>
 

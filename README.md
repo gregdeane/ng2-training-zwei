@@ -7,8 +7,8 @@
 * node 6+
 * npm 3+
 
-Note: Repo was created and tested using node 6.3.0 and npm 3.8.6. Although earlier versions will
-probably work, it's probably best to install the latest versions.
+Note: Repo was created and tested using node 6.3.0 and npm 3.8.6. Although earlier versions may work,
+it's probably best to install the latest versions.
 
 ## Usage
 
