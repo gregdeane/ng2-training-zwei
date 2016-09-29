@@ -8,13 +8,10 @@ import { AppService } from './app.service';
     <nav>
       <ul>
         <li>
-          <a [routerLink]="['./']">Index</a>
+          <a [routerLink]="['./home']" routerLinkActive="active">Home</a>
         </li>
         <li>
-          <a [routerLink]="['./home']">Home</a>
-        </li>
-        <li>
-          <a [routerLink]="['./detail']">Detail</a>
+          <a [routerLink]="['./cities']" routerLinkActive="active">Cities</a>
         </li>
       </ul>
     </nav>
