@@ -2,33 +2,31 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { AppService } from '../app.service';
-import { City } from './city.model';
-import { CityService } from './city.service';
+import { Person } from './person.model';
+import { PersonService } from './person.service';
 
 @Component({
-  selector: 'city-list',
   template: `
     <h1>{{ view }}</h1>
     <div class="list-group">
-      <button *ngFor="let city of cities"
-              [class.active]="isActive(city)"
-              (click)="onSelect(city)"
+      <button *ngFor="let person of persons"
+              (click)="onSelect(person)"
               class="list-group-item list-group-item-action">
-        {{ city.name }}
+        {{ person.name }}
       </button>
     </div>
   `
 })
-export class CityListComponent {
+export class PersonListComponent {
   private selectedId: number;
-  view = 'Cities';
-  cities: City[];
+  view = 'People';
+  persons: Person[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
-    private cityService: CityService
+    private personService: PersonService
   ) {
     this.appService.setTitle(this.view);
   }
@@ -37,15 +35,11 @@ export class CityListComponent {
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       this.selectedId = +params['id'];
-      this.cities = this.cityService.getCities();
+      this.persons = this.personService.getPersons();
     });
   }
 
-  onSelect(city: City): void {
-    this.router.navigate(['/city', city.id]);
-  }
-
-  isActive(city: City): boolean {
-    return city.id === this.selectedId;
+  onSelect(person: Person): void {
+    this.router.navigate([person.id], { relativeTo: this.route });
   }
 }

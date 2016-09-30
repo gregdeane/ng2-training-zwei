@@ -10,15 +10,14 @@ import { AppService } from './app.service';
     <div class="container">
       <nav class="navbar navbar-light bg-faded">
         <div class="nav navbar-nav">
-          <a [routerLink]="['./home']"
-             routerLinkActive="active"
-             class="nav-item nav-link active">
+          <a [routerLink]="['./home']" routerLinkActive="active" class="nav-item nav-link">
             Home
           </a>
-          <a [routerLink]="['./cities']"
-             routerLinkActive="active"
-             class="nav-item nav-link active">
+          <a [routerLink]="['./cities']" routerLinkActive="active" class="nav-item nav-link">
             Cities
+          </a>
+          <a [routerLink]="['./persons']" routerLinkActive="active" class="nav-item nav-link">
+            People
           </a>
         </div>
       </nav>
