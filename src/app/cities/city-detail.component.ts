@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
+import { AppService } from '../app.service';
 import { City } from './city.model';
 import { CityService } from './city.service';
 
 @Component({
   selector: 'city-detail',
   template: `
-    <h2>City Detail</h2>
+    <h1>{{ city.name }}</h1>
     <div *ngIf="city">
-      <h3>
-        {{ city.name }}
-      </h3>
       <div>
         <label>Id:</label>
         {{ city.id }}
@@ -20,11 +18,7 @@ import { CityService } from './city.service';
         <label>Name:</label>
         <input [(ngModel)]="city.name" placeholder="name">
       </div>
-      <p>
-        <button (click)="viewCities()">
-          Back
-        </button>
-      </p>
+      <button (click)="viewCities()">Back</button>
     </div>
   `
 })
@@ -34,6 +28,7 @@ export class CityDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
+    private appService: AppService,
     private service: CityService
   ) {}
 
@@ -42,6 +37,7 @@ export class CityDetailComponent {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
       this.city = this.service.getCity(id);
+      this.appService.setTitle(this.city.name);
     });
   }
 

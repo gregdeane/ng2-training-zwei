@@ -43,6 +43,9 @@ module.exports = function (options) {
         }
       ]
     },
+    sassLoader: {
+      includePaths: ['./src/assets', './node_modules/bootstrap/scss']
+    },
     plugins: [
 
       /**
