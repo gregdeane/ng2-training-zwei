@@ -8,14 +8,20 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <div class="container">
       <nav class="navbar navbar-light bg-faded">
         <div class="nav navbar-nav">
-          <a [routerLink]="['./home']" routerLinkActive="active" class="nav-item nav-link">
-            Home
-          </a>
+          <!--<a [routerLink]="['./home']" routerLinkActive="active" class="nav-item nav-link">-->
+            <!--Home-->
+          <!--</a>-->
           <a [routerLink]="['./cities']" routerLinkActive="active" class="nav-item nav-link">
             Cities
           </a>
           <a [routerLink]="['./persons']" routerLinkActive="active" class="nav-item nav-link">
             Child Routing
+          </a>
+          <a [routerLink]="['./admin']" routerLinkActive="active" class="nav-item nav-link">
+            Admin
+          </a>
+          <a [routerLink]="['./login']" routerLinkActive="active" class="nav-item nav-link">
+            Login
           </a>
         </div>
       </nav>
