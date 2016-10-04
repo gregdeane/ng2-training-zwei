@@ -1,7 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 
-import { AppService } from './app.service';
-
 @Component({
   selector: 'ng2-training',
   encapsulation: ViewEncapsulation.None,
@@ -17,7 +15,7 @@ import { AppService } from './app.service';
             Cities
           </a>
           <a [routerLink]="['./persons']" routerLinkActive="active" class="nav-item nav-link">
-            People
+            Child Routing
           </a>
         </div>
       </nav>

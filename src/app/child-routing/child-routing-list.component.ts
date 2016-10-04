@@ -20,7 +20,7 @@ import { ChildRoutingService } from './child-routing.service';
 })
 export class ChildRoutingListComponent {
   private selectedId: number;
-  view = 'People';
+  view = 'Child Routing';
   persons: ChildRouting[];
 
   constructor(
