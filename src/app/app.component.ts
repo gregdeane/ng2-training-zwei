@@ -17,6 +17,15 @@ import { Component, ViewEncapsulation } from '@angular/core';
           <a [routerLink]="['./persons']" routerLinkActive="active" class="nav-item nav-link">
             Child Routing
           </a>
+          <a [routerLink]="['./admin']" routerLinkActive="active" class="nav-item nav-link">
+            Admin
+          </a>
+          <a [routerLink]="['./login']" routerLinkActive="active" class="nav-item nav-link">
+            Login
+          </a>
+          <a [routerLink]="['./404']" routerLinkActive="active" class="nav-item nav-link">
+            404
+          </a>
         </div>
       </nav>
       <main>
