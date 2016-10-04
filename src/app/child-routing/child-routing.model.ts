@@ -1,4 +1,4 @@
-export class Person {
+export class ChildRouting {
   id: number;
   name: string;
 }

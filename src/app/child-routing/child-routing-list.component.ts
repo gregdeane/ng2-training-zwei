@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { AppService } from '../app.service';
-import { Person } from './person.model';
-import { PersonService } from './person.service';
+import { ChildRouting } from './child-routing.model';
+import { ChildRoutingService } from './child-routing.service';
 
 @Component({
   template: `
     <h1>{{ view }}</h1>
+    <p>Routes loaded using Child Routing</p>
     <div class="list-group">
       <button *ngFor="let person of persons"
               (click)="onSelect(person)"
@@ -17,16 +18,16 @@ import { PersonService } from './person.service';
     </div>
   `
 })
-export class PersonListComponent {
+export class ChildRoutingListComponent {
   private selectedId: number;
   view = 'People';
-  persons: Person[];
+  persons: ChildRouting[];
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
-    private personService: PersonService
+    private childRoutingService: ChildRoutingService
   ) {
     this.appService.setTitle(this.view);
   }
@@ -35,11 +36,11 @@ export class PersonListComponent {
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       this.selectedId = +params['id'];
-      this.persons = this.personService.getPersons();
+      this.persons = this.childRoutingService.getPersons();
     });
   }
 
-  onSelect(person: Person): void {
+  onSelect(person: ChildRouting): void {
     this.router.navigate([person.id], { relativeTo: this.route });
   }
 }

@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { AppService } from '../app.service';
-import { Person } from './person.model';
-import { PersonService } from './person.service';
+import { ChildRouting } from './child-routing.model';
+import { ChildRoutingService } from './child-routing.service';
 
 @Component({
   template: `
@@ -21,21 +21,21 @@ import { PersonService } from './person.service';
     </div>
   `
 })
-export class PersonDetailComponent {
-  person: Person;
+export class ChildRoutingDetailComponent {
+  person: ChildRouting;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
     private appService: AppService,
-    private personService: PersonService
+    private childRoutingService: ChildRoutingService
   ) {}
 
   // route params provided as Observable (explaining `forEach` usage)
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       let id = +params['id'];
-      this.person = this.personService.getPerson(id);
+      this.person = this.childRoutingService.getPerson(id);
       this.appService.setTitle(this.person.name);
     });
   }
