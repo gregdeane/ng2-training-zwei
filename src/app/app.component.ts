@@ -8,9 +8,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
     <div class="container">
       <nav class="navbar navbar-light bg-faded">
         <div class="nav navbar-nav">
-          <!--<a [routerLink]="['./home']" routerLinkActive="active" class="nav-item nav-link">-->
-            <!--Home-->
-          <!--</a>-->
+          <a [routerLink]="['./home']" routerLinkActive="active" class="nav-item nav-link">
+            Home
+          </a>
           <a [routerLink]="['./cities']" routerLinkActive="active" class="nav-item nav-link">
             Cities
           </a>
@@ -22,6 +22,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
           </a>
           <a [routerLink]="['./login']" routerLinkActive="active" class="nav-item nav-link">
             Login
+          </a>
+          <a [routerLink]="['./404']" routerLinkActive="active" class="nav-item nav-link">
+            404
           </a>
         </div>
       </nav>
