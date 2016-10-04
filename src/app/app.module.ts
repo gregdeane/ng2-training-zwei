@@ -6,7 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { routing, appRoutingProviders } from './app.routing';
 import { AppService } from './app.service';
-import { PersonModule } from './persons';
+import { ChildRoutingModule } from './child-routing';
 import { CitiesModule } from './cities';
 import { ENV_PROVIDERS } from './environment';
 import { HomeComponent } from './home';
@@ -23,7 +23,7 @@ const APP_PROVIDERS = [
     FormsModule,
     HttpModule,
     CitiesModule,
-    PersonModule,
+    ChildRoutingModule,
     routing
   ],
   declarations: [
